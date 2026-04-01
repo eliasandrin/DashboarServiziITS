@@ -5,7 +5,7 @@ import TimelinePage from './TimelinePage';
 
 const services = [
   { id: 'timeline', icon: '◈', label: 'Timeline', desc: 'Linea del tempo interattiva con corsi e tecnologie', color: '#00d4ff' },
-  { id: 'coming1', icon: '◉', label: 'Prossimamente', desc: 'Nuovo servizio in arrivo', color: '#444', locked: true },
+  { id: 'coming1', icon: '◎', label: 'Prossimamente', desc: 'Nuovo servizio in arrivo', color: '#444', locked: true },
   { id: 'coming2', icon: '◎', label: 'Prossimamente', desc: 'Nuovo servizio in arrivo', color: '#444', locked: true },
 ];
 
