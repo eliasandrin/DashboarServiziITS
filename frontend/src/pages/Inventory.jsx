@@ -28,11 +28,13 @@ export default function Inventory() {
   const [filter, setFilter] = useState('')
   const [actionLoading, setActionLoading] = useState(null)
   const [message, setMessage] = useState(null)
+  const [lastUpdated, setLastUpdated] = useState(null)
 
   const fetchVms = async () => {
     try {
       const res = await api.get('/vms/')
       setVms(res.data)
+      setLastUpdated(new Date())
     } catch (e) {
       setMessage({ type: 'error', text: 'Errore nel caricamento VM' })
     } finally {
@@ -89,6 +91,7 @@ export default function Inventory() {
 
       <div style={{ color: '#64748b', fontSize: 12, marginTop: -10, marginBottom: 14 }}>
         Aggiornamento automatico ogni 5 secondi
+        {lastUpdated ? ` - ultimo update: ${lastUpdated.toLocaleTimeString('it-IT')}` : ''}
       </div>
 
       {message && (

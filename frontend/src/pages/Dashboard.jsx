@@ -61,12 +61,14 @@ export default function Dashboard() {
   const [nodes, setNodes] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [lastUpdated, setLastUpdated] = useState(null)
 
   const fetchNodes = async () => {
     try {
       const res = await api.get('/nodes/')
       setNodes(res.data)
       setError('')
+      setLastUpdated(new Date())
     } catch (e) {
       setError(e.response?.data?.detail?.detail || 'Errore nel caricamento dei nodi')
     } finally {
@@ -87,6 +89,7 @@ export default function Dashboard() {
       <h2 style={{ color: '#f1f5f9', fontSize: 20, fontWeight: 600, marginBottom: 20 }}>Dashboard cluster</h2>
       <div style={{ color: '#64748b', fontSize: 12, marginTop: -12, marginBottom: 16 }}>
         Aggiornamento automatico ogni 5 secondi
+        {lastUpdated ? ` - ultimo update: ${lastUpdated.toLocaleTimeString('it-IT')}` : ''}
       </div>
 
       {error && (
